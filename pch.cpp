@@ -49,6 +49,7 @@ void Music::play_MCI(int pu[], HMIDIOUT midiip) {
 
 DWORD playMIDIFile(HWND hWndNotify, LPSTR lpszMIDIFileName)
 {
+
     UINT wDeviceID;
     DWORD dwReturn;
     MCI_OPEN_PARMS mciOpenParms;
@@ -58,8 +59,8 @@ DWORD playMIDIFile(HWND hWndNotify, LPSTR lpszMIDIFileName)
 
     // Open the device by specifying the device and filename.
     // MCI will attempt to choose the MIDI mapper as the output port.
-    mciOpenParms.lpstrDeviceType = "sequencer";
-    mciOpenParms.lpstrElementName = lpszMIDIFileName;
+    mciOpenParms.lpstrDeviceType = (LPCWSTR)"sequencer";
+    mciOpenParms.lpstrElementName = (LPCWSTR)lpszMIDIFileName;
     if (dwReturn = mciSendCommand(NULL, MCI_OPEN,
         MCI_OPEN_TYPE | MCI_OPEN_ELEMENT,
         (DWORD)(LPVOID)&mciOpenParms))
@@ -84,15 +85,13 @@ DWORD playMIDIFile(HWND hWndNotify, LPSTR lpszMIDIFileName)
     // Ask if the user wants to continue.
     if (LOWORD(mciStatusParms.dwReturn) != MIDI_MAPPER)
     {
-        if (MessageBox(hMainWnd,
-            "The MIDI mapper is not available. Continue?",
-            "", MB_YESNO) == IDNO)
+        /*if (MessageBox(hMainWnd, (LPCWSTR)"The MIDI mapper is not available. Continue?", (LPCWSTR)"", MB_YESNO) == IDNO)
         {
             // User does not want to continue. Not an error;
             // just close the device and return.
             mciSendCommand(wDeviceID, MCI_CLOSE, 0, NULL);
             return (0L);
-        }
+        }*/
     }
 
     // Begin playback. The window procedure function for the parent 
