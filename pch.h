@@ -14,7 +14,7 @@
 #include "wincrypt.h"
 #include"mmeapi.h"
 #include"Windows.h"
-#include"Mmsystem.h"
+#include"mmsystem.h"
 #pragma comment(lib,"winmm.lib")
 using namespace std;
 
@@ -25,5 +25,6 @@ public:
 	//MIDIHDR midihdr;//存储
 	//HANDLE handle;//缓冲区句柄
 	Music();//建构函数
-	void play(int g[], HMIDIOUT a);//演奏
+	void play_longmsg(int g[], HMIDIOUT a);//演奏,用midioutlongmsg
+	void play_MCI(int pu[], HMIDIOUT midiip);//演奏，用MCI
 };

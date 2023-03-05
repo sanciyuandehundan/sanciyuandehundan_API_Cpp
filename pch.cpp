@@ -1,7 +1,6 @@
 ﻿// pch.cpp: 与预编译标头对应的源文件
 
 #include "pch.h"
-
 // 当使用预编译的头时，需要使用此源文件，编译才能成功。
 
 Music::Music() {
@@ -12,7 +11,9 @@ Music::Music() {
 };//建构函数
 
 
-void Music::play(int g[], HMIDIOUT handle) {
+void Music::play_longmsg(int g[], HMIDIOUT handle) {
+	mciSendString((LPCWSTR)"play C:\\5dce7c575fb3adb0c988e.mp3 repeat", 0, 0, 0);
+	/*
 	//midiOutShortMsg(handle, 0x7e << 16 | 70 << 8 | 0x90);
 	MIDIHDR     midiHdr;
 	HANDLE      hBuffer;
@@ -20,7 +21,7 @@ void Music::play(int g[], HMIDIOUT handle) {
 	int sysEx[] = { 0xF0,0x90|0x40<<8|100<<16, 0xF7 };
 	int test0[] = { 0xf0,0x4d ,0x54 ,0x68 ,0x64 ,0x00 ,0x00 ,0x00 ,0x06 ,0x00 ,0x01 ,0x00 ,0x02 ,0x01 ,0xe0 ,0x4d ,0x54 ,0x72 ,0x6b ,0x00 ,0x00 ,0x00 ,0x19 ,0x00 ,0xff ,0x59 ,0x02 ,0x00 ,0x00 ,0x00 ,0xff ,0x58 ,0x04 ,0x04 ,0x02 ,0x18 ,0x08 ,0x00 ,0xff ,0x51 ,0x03 ,0x07 ,0xa1 ,0x20 ,0x00 ,0xff ,0x2f ,0x00 ,0x4d ,0x54 ,0x72 ,0x6b ,0x00 ,0x00 ,0x00 ,0x2c ,0x00 ,0xc0 ,0x00 ,0x00 ,0x90 ,0x40 ,0x5f ,0x83 ,0x60 ,0x80 ,0x40 ,0x00 ,0x00 ,0x90 ,0x41 ,0x5f ,0x83 ,0x30 ,0x80 ,0x41 ,0x00 ,0x30 ,0x90 ,0x40 ,0x5f ,0x83 ,0x30 ,0x80 ,0x40 ,0x00 ,0x30 ,0x90 ,0x40 ,0x5f ,0x83 ,0x30 ,0x80 ,0x40 ,0x00 ,0x83 ,0x60 ,0xff ,0x2f ,0x00 ,0xf7};
 	int test1[] = { 0xF0, 0x7F, 0x7F, 0x04, 0x01, 0x7F, 0x7F, 0xF7 };
-	g = test1;
+	g = test0;
 	hBuffer = GlobalAlloc(GHND, sizeof(g));//分配缓冲区
 	midiHdr.lpData = (LPSTR)GlobalLock(hBuffer);//将缓冲区交予midihdr
 	midiHdr.dwBufferLength = sizeof(g);////将缓冲区大小与midihdr同步
@@ -28,9 +29,19 @@ void Music::play(int g[], HMIDIOUT handle) {
 	err = midiOutPrepareHeader(handle, &midiHdr, sizeof(midiHdr));//准备缓冲区和midiHdr
 	if(err)midiOutShortMsg(handle, 100 << 16 | 60 << 8 | 0x90);
 	memcpy(midiHdr.lpData, &g[0], sizeof(g));//将midi命令放入缓冲区
-	//midiOutShortMsg(handle, 100 << 16 | 60 << 8 | 0x91);
 	midiOutLongMsg(handle, &midiHdr, sizeof(MIDIHDR));//演奏
-	if (err)midiOutShortMsg(handle, 100 << 16 | 60 << 8 | 0x90);
-	//midiOutShortMsg(handle, 100 << 16 | 60 << 8 | 0x90);
+	*/
 };
+void Music::play_MCI(int pu[], HMIDIOUT midiip) {
+	LPCTSTR lpszCommand = (LPCTSTR)"open C:\\Users\\a0905\\Downloadsmid\\(13).mid";
+	mciSendString((LPCTSTR)"play C:\\Users\\a0905\\Downloadsmid\\(13).mid" , 0, 0, 0);
+	LPTSTR lpszReturnString;
+	UINT cchReturn;
+	HANDLE hwndCallback;
+	//mciSendString(lpszCommand,lpszReturnString,cchReturn,hwndCallback);
+	char buf[50];
+
+	//mciSendString(lpszCommand,lpszReturnString, strlen(buf), NULL);
+
+}
 
