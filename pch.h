@@ -27,4 +27,6 @@ public:
 	Music();//建构函数
 	void play_longmsg(int g[], HMIDIOUT a);//演奏,用midioutlongmsg
 	void play_MCI(int pu[], HMIDIOUT midiip);//演奏，用MCI
+	UINT in_num();//没有midi输入设备
+	UINT out_num();//检测midi输出设备
 };
