@@ -12,12 +12,15 @@ using namespace std;
 extern "C" _declspec(dllexport) void midi_play(int yuepu[], HMIDIOUT handle)
 { 
     //midiOutShortMsg(handle, 0x7e << 16 | 60 << 8 | 0x90);
-    Music music = Music();//初始化music实例
-    music.play_mid(handle);
+    /*Music music = Music();//初始化music实例
+    music.play_mid(handle);*/
     //mciSendStringA("open C:\\Users\\a0905\\Desktop\\mydata.mid type sequencer alias m1", 0, 0, 0);
-    //mciSendStringA("play m1", 0, 0, 0);
+    mciSendStringA("open C:\\Users\\a0905\\Desktop\\mydata.mid", 0, 0, 0);
+    //mciSendStringW("open C:\Users\a0905\source\repos\sanciyuandehundan\music\bin\Debug\yingui0_1.mid",0,0,0);
+    //Sleep(5000);
+    mciSendStringA("play m1", 0, 0, 0);
     //delete &music;//删除music实例
-    MCI_OPEN_PARMS OpenParms;
+    /*MCI_OPEN_PARMS OpenParms;
     OpenParms.lpstrDeviceType =(LPCWSTR)MCI_DEVTYPE_SEQUENCER;//MIDI类型
     OpenParms.lpstrElementName = (LPCWSTR)"C:\\Users\\a0905\\Desktop\\mydata.mid";
     OpenParms.wDeviceID = 0;
@@ -25,5 +28,5 @@ extern "C" _declspec(dllexport) void midi_play(int yuepu[], HMIDIOUT handle)
     MCI_PLAY_PARMS PlayParms;
     PlayParms.dwFrom = 0;
     // 指定从什么地方（时间）播放
-    mciSendCommand(OpenParms.wDeviceID, MCI_PLAY, MCI_FROM, (DWORD)(LPVOID)&PlayParms);
+    mciSendCommand(OpenParms.wDeviceID, MCI_PLAY, MCI_FROM, (DWORD)(LPVOID)&PlayParms);*/
 }
