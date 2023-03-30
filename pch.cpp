@@ -69,3 +69,7 @@ UINT Music::in_num() {
 UINT Music::out_num() {
     return midiOutGetNumDevs();
 }
+
+UINT Music::play(string path) {
+	return 114514;
+}
