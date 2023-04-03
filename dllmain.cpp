@@ -12,15 +12,22 @@
 using namespace std;
 
 
-extern "C" _declspec(dllexport) UINT play(/* path*/)
+extern "C" _declspec(dllexport) UINT open(/* path*/)
 { 
-    /*wstring sl = wstring(path.begin(), path.end());
-    LPCWSTR s = sl.c_str();
-    if (0 == mciSendString(s, 0, 0, NULL)) {
-        cout << "s";
-        //midiOutShortMsg(handle, 0x7e << 16 | 60 << 8 | 0x90);
-        return mciSendString(L"play midi", NULL, 0, NULL);
-        Sleep(1000000);
-    }*/
+    return mciSendString(L"",0,0,NULL);
+}
+
+extern "C" _declspec(dllexport) UINT play(/* path*/)
+{
+    return 0;
+}
+
+extern "C" _declspec(dllexport) UINT stop(/* path*/)
+{
+    return 0;
+}
+
+extern "C" _declspec(dllexport) UINT close(/* path*/)
+{
     return 0;
 }
