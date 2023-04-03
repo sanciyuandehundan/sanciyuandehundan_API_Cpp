@@ -6,7 +6,13 @@
 
 #ifndef PCH_H
 #define PCH_H
+#pragma once
 
+#ifdef MATHLIBRARY_EXPORTS
+#define MATHLIBRARY_API __declspec(dllexport)
+#else
+#define MATHLIBRARY_API __declspec(dllimport)
+#endif
 // 添加要在此处预编译的标头
 #include "framework.h"
 #include"array"
@@ -20,7 +26,7 @@ using namespace std;
 
 #endif ;//PCH_H
 
-class Music {
+extern"C" class Music {
 public:
 	//MIDIHDR midihdr;//存储
 	//HANDLE handle;//缓冲区句柄

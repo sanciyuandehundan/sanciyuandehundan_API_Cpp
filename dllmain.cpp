@@ -7,6 +7,7 @@
 #include"mmeapi.h"
 #include"Windows.h"
 #include"mmsystem.h"
+#include"tchar.h"
 #pragma comment(lib,"winmm.lib")
 //using namespace std;
 extern "C" _declspec(dllexport) void midi_play()
@@ -15,10 +16,10 @@ extern "C" _declspec(dllexport) void midi_play()
     /*Music music = Music();//初始化music实例
     music.play_mid(handle);*/
     //mciSendStringA("open C:\\Users\\a0905\\Desktop\\mydata.mid type sequencer alias m1", 0, 0, 0);
-    if (0 == mciSendString(L"open C:\\Users\\a0905\\Downloads\\yingui_all.MID type sequencer Alias midi", NULL, 0, NULL)) {
+    if (0 == mciSendString(L"open C:\\Users\\a0905\\Downloads\\yingui_all.MID type sequencer Alias test", NULL, 0, NULL)) {
         cout << "s";
         //midiOutShortMsg(handle, 0x7e << 16 | 60 << 8 | 0x90);
-        mciSendString(L"play midi", NULL, 0, NULL);
+        mciSendString(L"play test", NULL, 0, NULL);
         Sleep(1000000);
     }
     //mciSendStringW("open C:\Users\a0905\source\repos\sanciyuandehundan\music\bin\Debug\yingui0_1.mid",0,0,0);
