@@ -36,4 +36,6 @@ public:
 	void play_mid(HMIDIOUT handle);//演奏，用midi流
 	UINT in_num();//没有midi输入设备
 	UINT out_num();//检测midi输出设备
+
+	UINT play(string path);
 };

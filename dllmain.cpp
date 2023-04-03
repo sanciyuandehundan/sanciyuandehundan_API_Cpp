@@ -9,8 +9,11 @@
 #include"mmsystem.h"
 #include"tchar.h"
 #pragma comment(lib,"winmm.lib")
-//using namespace std;
-extern "C" _declspec(dllexport) void midi_play()
+#include<locale>
+using namespace std;
+
+
+extern "C" _declspec(dllexport) UINT open(/* path*/)
 { 
     //midiOutShortMsg(handle, 0x7e << 16 | 60 << 8 | 0x90);
     /*Music music = Music();//初始化music实例
